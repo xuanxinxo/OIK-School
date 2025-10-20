@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  /* School palette */
+  --primary: #5ab2ff; /* action */
+  --primary-soft: #a0deff; /* surfaces */
+  --primary-soft-2: #caf4ff; /* backgrounds */
+  --accent: #fff9d0; /* highlight */
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-soft: var(--primary-soft);
+  --color-primary-soft-2: var(--primary-soft-2);
+  --color-accent: var(--accent);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+    /* keep palette readable on dark */
+    --primary: #5ab2ff;
+    --primary-soft: #3a79b7;
+    --primary-soft-2: #1f3245;
+    --accent: #2a2a1a;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+  color: var(--color-primary);
+}
+
+a:hover {
+  opacity: 0.9;
+}
+
+.oik-section {
+  background: var(--color-primary-soft-2);
+  border-radius: 12px;
+}
+
+.oik-section-strong {
+  background: var(--color-primary-soft);
+  border-radius: 12px;
+}
+
+.oik-accent {
+  background: var(--color-accent);
+  border-radius: 12px;
+}
