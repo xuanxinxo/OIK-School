@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useAuth } from '@/src/context/AuthContext';
 import { useRouter } from 'next/navigation';
 
@@ -12,11 +12,9 @@ interface AuthGuardProps {
 export default function AuthGuard({ children, fallback }: AuthGuardProps) {
   const { user, isLoading } = useAuth();
   const router = useRouter();
-  const [showLoginPrompt, setShowLoginPrompt] = useState(false);
 
   useEffect(() => {
     if (!isLoading && !user) {
-      setShowLoginPrompt(true);
       // Redirect sau 3 giây
       const timer = setTimeout(() => {
         router.push('/');

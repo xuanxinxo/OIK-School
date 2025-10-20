@@ -23,14 +23,14 @@ export class ApiService {
     return this.request<T>(endpoint, { method: 'GET' });
   }
 
-  static async post<T>(endpoint: string, data: any): Promise<T> {
+  static async post<T>(endpoint: string, data: unknown): Promise<T> {
     return this.request<T>(endpoint, {
       method: 'POST',
       body: JSON.stringify(data),
     });
   }
 
-  static async put<T>(endpoint: string, data: any): Promise<T> {
+  static async put<T>(endpoint: string, data: unknown): Promise<T> {
     return this.request<T>(endpoint, {
       method: 'PUT',
       body: JSON.stringify(data),

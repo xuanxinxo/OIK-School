@@ -46,7 +46,7 @@ export default function AdmissionsChat({ initialContext }: Props) {
     try {
       const reply = await sendChat(nextMessages);
       setMessages((prev) => [...prev, { role: "assistant", content: reply }]);
-    } catch (err: any) {
+    } catch {
       setMessages((prev) => [
         ...prev,
         { role: "assistant", content: "Xin lỗi, hiện hệ thống đang bận. Bạn vui lòng thử lại sau nhé!" },

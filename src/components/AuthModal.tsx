@@ -49,7 +49,7 @@ export default function AuthModal({ isOpen, onClose, initialMode }: AuthModalPro
           setError('Đăng ký thất bại. Vui lòng thử lại');
         }
       }
-    } catch (error) {
+    } catch {
       setError('Có lỗi xảy ra. Vui lòng thử lại');
     } finally {
       setIsSubmitting(false);

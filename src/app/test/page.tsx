@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Link from 'next/link';
 import { useAuth } from '@/src/context/AuthContext';
 import AuthGuard from '@/src/components/AuthGuard';
 
@@ -94,15 +95,15 @@ export default function TestPage() {
              <p className="text-gray-600 mb-8">
                Kết quả đánh giá của bạn đã được ghi nhận. Chúng tôi sẽ xem xét và liên hệ tư vấn tuyển sinh trong thời gian sớm nhất.
              </p>
-            <div className="space-y-4">
-              <a
-                href="/"
-                className="inline-flex items-center px-6 py-3 rounded-lg font-medium text-white"
-                style={{ backgroundColor: 'var(--color-primary)' }}
-              >
-                Về trang chủ
-              </a>
-            </div>
+             <div className="space-y-4">
+               <Link
+                 href="/"
+                 className="inline-flex items-center px-6 py-3 rounded-lg font-medium text-white"
+                 style={{ backgroundColor: 'var(--color-primary)' }}
+               >
+                 Về trang chủ
+               </Link>
+             </div>
           </div>
         </div>
       </div>
@@ -119,7 +120,7 @@ export default function TestPage() {
                Bài Test Tuyển Sinh THPT Ông Ích Khiêm
              </h1>
              <p className="text-gray-600">
-               Chào mừng {user.name}! Hãy trả lời các câu hỏi dưới đây để chúng tôi có thể đánh giá và tư vấn tuyển sinh phù hợp nhất cho bạn.
+               Chào mừng {user?.name}! Hãy trả lời các câu hỏi dưới đây để chúng tôi có thể đánh giá và tư vấn tuyển sinh phù hợp nhất cho bạn.
              </p>
            </div>
 

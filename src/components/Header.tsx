@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Link from 'next/link';
 import { useAuth } from '@/src/context/AuthContext';
 import AuthModal from './AuthModal';
 import Avatar from './Avatar';
@@ -30,10 +31,10 @@ export default function Header() {
     <>
       <header className="w-full border-b border-black/[.08] dark:border-white/[.145] bg-[--color-primary-soft-2]">
         <div className="max-w-6xl mx-auto flex items-center justify-between p-4 sm:p-6">
-          <a href="/" className="flex items-center gap-3">
+          <Link href="/" className="flex items-center gap-3">
             <img src="/globe.svg" alt="Logo THPT Ông Ích Khiêm" className="h-6 w-6" />
             <span className="font-semibold">THPT Ông Ích Khiêm</span>
-          </a>
+          </Link>
           
           <nav className="flex items-center gap-4 sm:gap-6 text-sm">
             <a href="/gioi-thieu" className="hover:underline">Giới thiệu</a>

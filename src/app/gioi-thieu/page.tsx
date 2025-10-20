@@ -50,16 +50,7 @@ export default function GioiThieuPage() {
             Trang thiết bị dần được đầu tư hiện đại nhằm tạo điều kiện học tập tốt nhất cho học sinh.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <img
-              src="/images/phong-hoc.jpg"
-              alt="Phòng học"
-              className="w-full h-48 object-cover rounded-md"
-            />
-            <img
-              src="/images/san-the-thao.jpg"
-              alt="Sân thể thao"
-              className="w-full h-48 object-cover rounded-md"
-            />
+          
           </div>
         </div>
 
@@ -82,16 +73,7 @@ export default function GioiThieuPage() {
             Từ đó, học sinh không chỉ phát triển kiến thức mà còn kỹ năng xã hội, tinh thần khởi nghiệp và sáng tạo.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <img
-              src="/images/van-nghe.jpg"
-              alt="Hoạt động văn nghệ"
-              className="w-full h-48 object-cover rounded-md"
-            />
-            <img
-              src="/images/the-thao.jpg"
-              alt="Hoạt động thể thao"
-              className="w-full h-48 object-cover rounded-md"
-            />
+         
           </div>
         </div>
 
