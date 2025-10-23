@@ -46,10 +46,14 @@ export default function AdmissionsChat({ initialContext }: Props) {
     try {
       const reply = await sendChat(nextMessages);
       setMessages((prev) => [...prev, { role: "assistant", content: reply }]);
-    } catch {
+    } catch (error) {
+      console.error('Chat error:', error);
       setMessages((prev) => [
         ...prev,
-        { role: "assistant", content: "Xin lỗi, hiện hệ thống đang bận. Bạn vui lòng thử lại sau nhé!" },
+        { 
+          role: "assistant", 
+          content: "Xin lỗi, hiện hệ thống đang bận. Bạn vui lòng thử lại sau hoặc liên hệ trực tiếp với nhà trường để được tư vấn nhé!" 
+        },
       ]);
     } finally {
       setLoading(false);
@@ -78,6 +82,9 @@ export default function AdmissionsChat({ initialContext }: Props) {
               <div className="text-sm font-semibold">Trợ lý tư vấn tuyển sinh</div>
               <div className="text-xs text-blue-100">Chat trực tiếp để được gợi ý phù hợp</div>
             </div>
+          </div>
+          <div className="mt-2 text-xs text-blue-100 bg-blue-500/30 rounded-full px-3 py-1 inline-block">
+            💡 Hệ thống thông minh - Tự động phân tích câu hỏi
           </div>
         </div>
 

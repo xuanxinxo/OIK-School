@@ -44,11 +44,57 @@ export async function POST(req: NextRequest) {
     const groqKey = process.env.GROQ_API_KEY;
 
     if (!openaiKey && !groqKey) {
-      // Fallback câu trả lời tĩnh nếu thiếu API key
+      // Fallback câu trả lời thông minh dựa trên nội dung câu hỏi
+      const userMessage = messages[messages.length - 1]?.content?.toLowerCase() || '';
+      
+      let fallbackReply = "Xin chào! Hiện tại hệ thống chưa cấu hình khoá AI. ";
+      
+      // Phân tích câu hỏi và đưa ra gợi ý phù hợp
+      if (userMessage.includes('ngành') || userMessage.includes('học') || userMessage.includes('chuyên') || userMessage.includes('môn')) {
+        fallbackReply += "Về ngành học, trường THPT Ông Ích Khiêm có các ngành: Khoa học tự nhiên, Khoa học xã hội, Ngoại ngữ. ";
+      }
+      
+      if (userMessage.includes('điểm') || userMessage.includes('chuẩn') || userMessage.includes('đầu vào') || userMessage.includes('thi')) {
+        fallbackReply += "Điểm chuẩn năm 2024: Khoa học tự nhiên 18-20 điểm, Khoa học xã hội 16-18 điểm. ";
+      }
+      
+      if (userMessage.includes('học phí') || userMessage.includes('phí') || userMessage.includes('tiền') || userMessage.includes('chi phí')) {
+        fallbackReply += "Học phí: 2.500.000đ/tháng. ";
+      }
+      
+      if (userMessage.includes('hồ sơ') || userMessage.includes('đăng ký') || userMessage.includes('nộp') || userMessage.includes('giấy tờ')) {
+        fallbackReply += "Hồ sơ cần: Bằng tốt nghiệp THCS, học bạ, giấy khai sinh, ảnh 3x4. ";
+      }
+      
+      if (userMessage.includes('địa chỉ') || userMessage.includes('ở đâu') || userMessage.includes('vị trí') || userMessage.includes('địa điểm')) {
+        fallbackReply += "Trường tọa lạc tại Đà Nẵng, gần trung tâm thành phố, thuận tiện giao thông. ";
+      }
+      
+      if (userMessage.includes('liên hệ') || userMessage.includes('số điện thoại') || userMessage.includes('phone') || userMessage.includes('gọi')) {
+        fallbackReply += "Liên hệ: Hotline 0236.xxx.xxx hoặc email: info@ongichkhiem.edu.vn. ";
+      }
+      
+      if (userMessage.includes('thời gian') || userMessage.includes('khi nào') || userMessage.includes('tuyển sinh')) {
+        fallbackReply += "Thời gian tuyển sinh: Tháng 6-7 hàng năm. ";
+      }
+      
+      if (userMessage.includes('cơ sở') || userMessage.includes('trang thiết bị') || userMessage.includes('phòng học')) {
+        fallbackReply += "Trường có cơ sở vật chất hiện đại, phòng học đầy đủ tiện nghi. ";
+      }
+      
+      if (userMessage.includes('giáo viên') || userMessage.includes('thầy cô') || userMessage.includes('giảng dạy')) {
+        fallbackReply += "Đội ngũ giáo viên giàu kinh nghiệm, tận tâm với học sinh. ";
+      }
+      
+      if (userMessage.includes('hoạt động') || userMessage.includes('năng khiếu') || userMessage.includes('câu lạc bộ')) {
+        fallbackReply += "Trường có nhiều hoạt động ngoại khóa, câu lạc bộ năng khiếu phong phú. ";
+      }
+      
+      fallbackReply += "Bạn có thể để lại thông tin liên hệ để nhà trường tư vấn chi tiết hơn.";
+      
       return new Response(
         JSON.stringify({
-          reply:
-            "Xin chào! Hiện tại hệ thống chưa cấu hình khoá AI. Tuy nhiên bạn có thể để lại câu hỏi về tuyển sinh (ngành học, điểm chuẩn, học phí, hồ sơ...) và nhà trường sẽ liên hệ lại sớm nhất.",
+          reply: fallbackReply,
         }),
         { status: 200, headers: { "Content-Type": "application/json" } }
       );
