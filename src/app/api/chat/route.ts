@@ -46,8 +46,9 @@ export async function POST(req: NextRequest) {
     if (!openaiKey && !groqKey) {
       // Fallback câu trả lời thông minh dựa trên nội dung câu hỏi
       const userMessage = messages[messages.length - 1]?.content?.toLowerCase() || '';
+      console.log('Using fallback mode, user message:', userMessage);
       
-      let fallbackReply = "Xin chào! Hiện tại hệ thống chưa cấu hình khoá AI. ";
+      let fallbackReply = "Xin chào! Tôi là trợ lý tư vấn tuyển sinh của trường THPT Ông Ích Khiêm. ";
       
       // Phân tích câu hỏi và đưa ra gợi ý phù hợp
       if (userMessage.includes('ngành') || userMessage.includes('học') || userMessage.includes('chuyên') || userMessage.includes('môn')) {
@@ -90,7 +91,12 @@ export async function POST(req: NextRequest) {
         fallbackReply += "Trường có nhiều hoạt động ngoại khóa, câu lạc bộ năng khiếu phong phú. ";
       }
       
-      fallbackReply += "Bạn có thể để lại thông tin liên hệ để nhà trường tư vấn chi tiết hơn.";
+      // Xử lý tin nhắn không rõ ràng hoặc ngắn
+      if (userMessage.length < 3 || (!userMessage.includes('ngành') && !userMessage.includes('học') && !userMessage.includes('điểm') && !userMessage.includes('phí') && !userMessage.includes('hồ sơ') && !userMessage.includes('địa chỉ') && !userMessage.includes('liên hệ') && !userMessage.includes('thời gian') && !userMessage.includes('cơ sở') && !userMessage.includes('giáo viên') && !userMessage.includes('hoạt động'))) {
+        fallbackReply += "Tôi có thể giúp bạn tìm hiểu về: ngành học, điểm chuẩn, học phí, hồ sơ tuyển sinh, địa chỉ trường, thời gian tuyển sinh, cơ sở vật chất, đội ngũ giáo viên, hoạt động ngoại khóa. ";
+      }
+      
+      fallbackReply += "Bạn muốn biết thông tin gì cụ thể? Tôi sẽ tư vấn chi tiết cho bạn!";
       
       return new Response(
         JSON.stringify({
