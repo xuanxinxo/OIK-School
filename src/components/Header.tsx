@@ -32,7 +32,7 @@ export default function Header() {
       <header className="w-full border-b border-black/[.08] dark:border-white/[.145] bg-[--color-primary-soft-2]">
         <div className="max-w-6xl mx-auto flex items-center justify-between p-4 sm:p-6">
           <Link href="/" className="flex items-center gap-3">
-            <img src="/globe.svg" alt="Logo THPT Ông Ích Khiêm" className="h-6 w-6" />
+            <img src="/logo truong.jpg" alt="Logo THPT Ông Ích Khiêm" className="h-20 w-20" />
             <span className="font-semibold">THPT Ông Ích Khiêm</span>
           </Link>
           

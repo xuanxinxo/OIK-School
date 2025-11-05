@@ -2,18 +2,19 @@ export default function GioiThieuPage() {
   return (
     <section className="px-6 sm:px-8 md:px-10">
       <div className="max-w-5xl mx-auto py-12 sm:py-16 oik-section">
+        
         {/* Phần banner */}
         <div className="mb-12">
           <img
             src="/img/OKI.jpg"
             alt="Cổng trường THPT Ông Ích Khiêm"
             className="w-full h-64 object-cover rounded-lg shadow-md"
-          />
+          /> 
           <h1 className="text-3xl sm:text-4xl font-bold mt-4 text-center">
             Trường THPT Ông Ích Khiêm
           </h1>
           <p className="text-center text-lg text-gray-600 dark:text-gray-300 mt-2">
-            “Ươm mầm tài năng – Kiến tạo tương lai - Xây dựng đất nước ngày càng vững mạnh ”
+            “Ươm mầm tài năng - Kiến tạo tương lai - Xây dựng đất nước ngày càng vững mạnh ”
           </p>
         </div>
 
