@@ -97,7 +97,7 @@ export default function GioiThieuPage() {
         <div className="mb-10">
           <h2 className="text-2xl sm:text-3xl font-semibold mb-4">Liên hệ & địa chỉ</h2>
           <p className="text-black/80 dark:text-white/80 leading-relaxed mb-2">
-            Địa chỉ: Thôn Cẩm Toại Trung, Hòa Vang, TP. Đà Nẵng  
+            Địa chỉ: Thôn Cẩm Toại Trung, Xã Hòa Vang, TP. Đà Nẵng  
           </p>
           <p className="text-black/80 dark:text-white/80 leading-relaxed">
             Điện thoại: 0236 3846 401  
