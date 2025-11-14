@@ -2,8 +2,27 @@
 
 import React, { useEffect } from "react";
 
+declare global {
+  interface Window {
+    showRegister?: () => void;
+    showLogin?: () => void;
+    register?: () => void;
+    login?: () => void;
+    finish?: () => void;
+    showAllSubjects?: () => void;
+    openSubject?: (name: string) => void;
+    backToSubjects?: () => void;
+    saveNotes?: () => void;
+    startMic?: () => void;
+  }
+}
+
 export default function LienHePage() {
   useEffect(() => {
+    if (typeof window === "undefined") {
+      return;
+    }
+
     const userDB: Record<string, string> = {};
     let favoriteSubjects: string[] = [];
     let selectedCount = 0;
@@ -14,19 +33,19 @@ export default function LienHePage() {
     const subjectGrid = document.getElementById("subjectGrid")!;
     const subjects = document.querySelectorAll(".subject-card");
 
-    (window as any).showRegister = function () {
+    window.showRegister = function () {
       document.getElementById("loginForm")!.classList.add("hidden");
       document.getElementById("registerForm")!.classList.remove("hidden");
       document.getElementById("loginTitle")!.innerText = "Đăng ký";
     };
 
-    (window as any).showLogin = function () {
+    window.showLogin = function () {
       document.getElementById("registerForm")!.classList.add("hidden");
       document.getElementById("loginForm")!.classList.remove("hidden");
       document.getElementById("loginTitle")!.innerText = "Đăng nhập";
     };
 
-    (window as any).register = function () {
+    window.register = function () {
       const u = (document.getElementById("regUser") as HTMLInputElement).value;
       const p1 = (document.getElementById("regPass1") as HTMLInputElement).value;
       const p2 = (document.getElementById("regPass2") as HTMLInputElement).value;
@@ -34,10 +53,10 @@ export default function LienHePage() {
       if (p1 !== p2) return alert("Mật khẩu nhập lại không khớp!");
       userDB[u] = p1;
       alert("Đăng ký thành công!");
-      (window as any).showLogin();
+      window.showLogin?.();
     };
 
-    (window as any).login = function () {
+    window.login = function () {
       const u = (document.getElementById("loginUser") as HTMLInputElement).value;
       const p = (document.getElementById("loginPass") as HTMLInputElement).value;
       if (!userDB[u]) return alert("Tài khoản không tồn tại!");
@@ -64,16 +83,16 @@ export default function LienHePage() {
       });
     });
 
-    (window as any).finish = function () {
+    window.finish = function () {
       favoriteSubjects = Array.from(subjects)
         .filter((s) => s.classList.contains("selected"))
         .map((s) => s.textContent || "");
       if (favoriteSubjects.length === 0) return alert("Hãy chọn ít nhất 1 môn!");
       subjectSelect.style.display = "none";
-      (window as any).showAllSubjects();
+      window.showAllSubjects?.();
     };
 
-    (window as any).showAllSubjects = function () {
+    window.showAllSubjects = function () {
       const all = [
         "Toán",
         "Vật Lí",
@@ -97,26 +116,39 @@ export default function LienHePage() {
       allSubjects.style.display = "flex";
     };
 
-    (window as any).openSubject = function (name: string) {
+    window.openSubject = function (name: string) {
       document.getElementById("subjectTitle")!.innerText = "Môn " + name;
       document.getElementById("aiSubject")!.innerText = name;
       allSubjects.style.display = "none";
       document.getElementById("subjectDetail")!.style.display = "flex";
     };
 
-    (window as any).backToSubjects = function () {
+    window.backToSubjects = function () {
       document.getElementById("subjectDetail")!.style.display = "none";
       allSubjects.style.display = "flex";
     };
 
-    (window as any).saveNotes = function () {
+    window.saveNotes = function () {
       const n = (document.getElementById("taskNotes") as HTMLTextAreaElement)
         .value;
       alert("Đã lưu ghi chú: " + n);
     };
 
-    (window as any).startMic = function () {
+    window.startMic = function () {
       alert("🎤 Chức năng mic sẽ được bổ sung sau!");
+    };
+
+    return () => {
+      window.showRegister = undefined;
+      window.showLogin = undefined;
+      window.register = undefined;
+      window.login = undefined;
+      window.finish = undefined;
+      window.showAllSubjects = undefined;
+      window.openSubject = undefined;
+      window.backToSubjects = undefined;
+      window.saveNotes = undefined;
+      window.startMic = undefined;
     };
   }, []);
 
@@ -333,12 +365,12 @@ export default function LienHePage() {
         <div id="loginForm">
           <input type="text" id="loginUser" placeholder="Tên đăng nhập" />
           <input type="password" id="loginPass" placeholder="Mật khẩu" />
-          <button className="button" onClick={() => (window as any).login()}>
+          <button className="button" onClick={() => window.login?.()}>
             Đăng nhập
           </button>
           <p
             style={{ color: "white", marginTop: "10px", cursor: "pointer" }}
-            onClick={() => (window as any).showRegister()}
+            onClick={() => window.showRegister?.()}
           >
             Chưa có tài khoản? Đăng ký
           </p>
@@ -348,12 +380,12 @@ export default function LienHePage() {
           <input type="text" id="regUser" placeholder="Tên đăng nhập" />
           <input type="password" id="regPass1" placeholder="Mật khẩu" />
           <input type="password" id="regPass2" placeholder="Nhập lại mật khẩu" />
-          <button className="button" onClick={() => (window as any).register()}>
+          <button className="button" onClick={() => window.register?.()}>
             Xác nhận đăng ký
           </button>
           <p
             style={{ color: "white", marginTop: "10px", cursor: "pointer" }}
-            onClick={() => (window as any).showLogin()}
+            onClick={() => window.showLogin?.()}
           >
             Đã có tài khoản? Đăng nhập
           </p>
@@ -388,7 +420,7 @@ export default function LienHePage() {
         <button
           className="button"
           style={{ marginTop: "25px" }}
-          onClick={() => (window as any).finish()}
+          onClick={() => window.finish?.()}
         >
           Hoàn tất đăng ký
         </button>
@@ -408,7 +440,7 @@ export default function LienHePage() {
             borderRadius: "8px",
             padding: "8px 16px",
           }}
-          onClick={() => (window as any).backToSubjects()}
+          onClick={() => window.backToSubjects?.()}
         >
           ← Quay lại
         </button>
@@ -439,7 +471,7 @@ export default function LienHePage() {
               id="taskNotes"
               placeholder="Nhập ghi chú nhiệm vụ tại đây..."
             ></textarea>
-            <button className="button" onClick={() => (window as any).saveNotes()}>
+            <button className="button" onClick={() => window.saveNotes?.()}>
               Lưu
             </button>
           </div>
@@ -448,7 +480,7 @@ export default function LienHePage() {
             <p>Bạn có thể bật mic để trò chuyện trực tiếp về môn học này.</p>
             <button
               className="button"
-              onClick={() => (window as any).startMic()}
+              onClick={() => window.startMic?.()}
             >
               🎙️ Bật mic
             </button>

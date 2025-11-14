@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useAuth } from '@/src/context/AuthContext';
 import AuthModal from './AuthModal';
 import Avatar from './Avatar';
@@ -32,7 +33,14 @@ export default function Header() {
       <header className="w-full border-b border-black/[.08] dark:border-white/[.145] bg-[--color-primary-soft-2]">
         <div className="max-w-6xl mx-auto flex items-center justify-between p-4 sm:p-6">
           <Link href="/" className="flex items-center gap-3">
-            <img src="/logo truong.jpg" alt="Logo THPT Ông Ích Khiêm" className="h-20 w-20" />
+            <Image
+              src="/logo truong.jpg"
+              alt="Logo THPT Ông Ích Khiêm"
+              width={80}
+              height={80}
+              className="h-20 w-20 object-cover"
+              priority
+            />
             <span className="font-semibold">THPT Ông Ích Khiêm</span>
           </Link>
           

@@ -1,13 +1,18 @@
+import Image from "next/image";
+
 export default function Home() {
   return (
     <div className="w-full">
       {/* HERO */}
       <section className="relative">
-      <img
-  src="/img/OKI.jpg"
-  alt="Học sinh tại trường"
-  className="w-full h-[600px] object-cover"
-/>
+      <Image
+        src="/img/OKI.jpg"
+        alt="Học sinh tại trường"
+        width={1920}
+        height={600}
+        className="w-full h-[600px] object-cover"
+        priority
+      />
 
         <div
           className="absolute inset-0"
@@ -203,19 +208,25 @@ export default function Home() {
           </div>
           <div className="order-1 md:order-2">
             <div className="grid grid-cols-3 gap-3 items-stretch">
-              <img
+              <Image
                 src="/img/thi.jpg"
                 alt="Học sinh trong lớp"
+                width={400}
+                height={260}
                 className="rounded-xl object-cover h-[210px] md:h-[260px] w-full col-span-1"
               />
-              <img
+              <Image
                 src="/img/nice.jpg"
                 alt="Sinh hoạt ngoại khóa"
+                width={800}
+                height={260}
                 className="rounded-xl object-cover h-[210px] md:h-[260px] w-full col-span-2"
               />
-              <img
+              <Image
                 src="/img/ra.jpg"
                 alt="Giảng đường"
+                width={400}
+                height={150}
                 className="rounded-xl object-cover h-[120px] md:h-[150px] w-full col-span-1 md:col-span-1"
               />
             </div>

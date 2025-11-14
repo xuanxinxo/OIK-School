@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function GioiThieuPage() {
   return (
     <section className="px-6 sm:px-8 md:px-10">
@@ -5,10 +7,13 @@ export default function GioiThieuPage() {
         
         {/* Phần banner */}
         <div className="mb-12">
-          <img
+          <Image
             src="/img/OKI.jpg"
             alt="Cổng trường THPT Ông Ích Khiêm"
+            width={1200}
+            height={400}
             className="w-full h-64 object-cover rounded-lg shadow-md"
+            priority
           /> 
           <h1 className="text-3xl sm:text-4xl font-bold mt-4 text-center">
             Trường THPT Ông Ích Khiêm
@@ -92,7 +97,7 @@ export default function GioiThieuPage() {
         <div className="mb-10">
           <h2 className="text-2xl sm:text-3xl font-semibold mb-4">Liên hệ & địa chỉ</h2>
           <p className="text-black/80 dark:text-white/80 leading-relaxed mb-2">
-            Địa chỉ: Thôn Cẩm Toại Trung, xã Hòa Phong, huyện Hòa Vang, TP. Đà Nẵng  
+            Địa chỉ: Thôn Cẩm Toại Trung, Hòa Vang, TP. Đà Nẵng  
           </p>
           <p className="text-black/80 dark:text-white/80 leading-relaxed">
             Điện thoại: 0236 3846 401  

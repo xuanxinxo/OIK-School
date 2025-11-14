@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function AdmissionsHero() {
   return (
     <section className="bg-gradient-to-br from-blue-50 via-white to-indigo-50">
@@ -5,10 +7,13 @@ export default function AdmissionsHero() {
       <div className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-indigo-600/10"></div>
         <div className="absolute inset-0">
-          <img 
-            src="./img/OKI.jpg" 
-            alt="Students studying" 
-            className="w-full h-full object-cover opacity-20"
+          <Image
+            src="/img/OKI.jpg"
+            alt="Students studying"
+            fill
+            className="object-cover opacity-20"
+            sizes="100vw"
+            priority
           />
         </div>
 
