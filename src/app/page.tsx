@@ -109,7 +109,7 @@ export default function Home() {
                   />
                 </svg>
                 <div>
-                  <div className="font-semibold">University Life</div>
+                  <div className="font-semibold">High School Life</div>
                   <div className="text-sm text-black/70">
                     CLB đa dạng, hoạt động trải nghiệm phong phú.
                   </div>
