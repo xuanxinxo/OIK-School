@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+<<<<<<< HEAD
+// import "../tuyensinh/globals.css";
+=======
 import "./globals.css";
+>>>>>>> eb9f9d0f8e3fe088ac23e82f91a1805cce80bfeb
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { AuthProvider } from "../context/AuthContext";
