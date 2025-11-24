@@ -166,7 +166,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto py-14 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
           <div className="order-2 md:order-1">
             <h2 className="text-2xl sm:text-3xl font-bold mb-3">
-              Chương trình học đa dạng
+              Chương trình học đa dạng và hiện đại
             </h2>
             <p className="text-black/70 dark:text-white/80 mb-5">
               Các tổ chuyên môn đổi mới phương pháp dạy học, chú trọng kỹ năng
