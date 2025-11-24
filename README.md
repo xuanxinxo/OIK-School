@@ -37,31 +37,41 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 ## AI Chat tư vấn tuyển sinh
 
-Để bật Chat AI (sử dụng OpenAI Chat Completions):
+### ⚠️ QUAN TRỌNG: Setup khi clone code về máy mới
 
-1. Tạo file `.env.local` ở project root với nội dung:
+Khi clone code về máy khác, bạn **PHẢI** tạo file `.env.local` để AI chat hoạt động:
 
-```
+1. **Tạo file `.env.local`** ở thư mục gốc project (cùng cấp với `package.json`)
+
+2. **Copy nội dung sau vào file `.env.local`:**
+
+```env
+# Chọn một trong hai (hoặc cả hai, hệ thống sẽ ưu tiên Groq)
+
+# Groq API Key (Miễn phí - KHUYẾN NGHỊ)
+# Lấy tại: https://console.groq.com/keys
+GROQ_API_KEY=your_groq_api_key_here
+
+# OpenAI API Key (Có phí)
+# Lấy tại: https://platform.openai.com/account/api-keys
 OPENAI_API_KEY=your_openai_api_key_here
 ```
 
-2. Khởi động lại dev server nếu đang chạy.
+3. **Thay thế `your_*_api_key_here`** bằng API key thật của bạn
 
+4. **Khởi động lại dev server:**
+```bash
+npm run dev
+```
+
+### 📝 Lưu ý:
+- File `.env.local` **KHÔNG** được commit lên Git (đã có trong `.gitignore`)
+- Nếu không có API key, hệ thống vẫn hoạt động nhưng sẽ dùng **fallback responses** (không cần AI)
+- **Groq** miễn phí và có hạn mức rộng rãi, khuyến nghị dùng
+- **OpenAI** có phí nhưng chất lượng tốt hơn
+
+### 🔧 Cấu trúc code:
 - API route: `src/app/api/chat/route.ts`
 - Client service: `src/services/chat.ts`
 - UI component: `src/components/AdmissionsChat.tsx`
-- Tích hợp: trang `src/app/tuyen-sinh/page.tsx` (hiển thị sau khi có kết quả test)
-
-Nếu không thiết lập `OPENAI_API_KEY`, API sẽ trả về câu trả lời fallback thông báo chưa cấu hình khóa.
-
-### Dùng miễn phí với Groq (khuyến nghị)
-Bạn có thể dùng Groq free tier thay cho OpenAI:
-
-1. Tạo tài khoản và API key tại `https://console.groq.com/keys`
-2. Thêm vào `.env.local`:
-
-```
-GROQ_API_KEY=your_groq_api_key_here
-```
-
-- Hệ thống sẽ tự ưu tiên Groq nếu có `GROQ_API_KEY`; nếu không có, sẽ dùng `OPENAI_API_KEY`; nếu đều thiếu sẽ fallback thông báo tĩnh.
+- Tích hợp: trang `src/app/tuyen-sinh/page.tsx`

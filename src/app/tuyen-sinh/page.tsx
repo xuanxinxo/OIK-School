@@ -1,10 +1,10 @@
 "use client";
 import { useState } from "react";
-import { useAuth } from "@/src/context/AuthContext";
-import AdmissionsHero from "@/src/components/AdmissionsHero";
-import AdmissionsSelect from "@/src/components/AdmissionsSelect";
-import AdmissionsTest from "@/src/components/AdmissionsTest";
-import AdmissionsResult from "@/src/components/AdmissionsResult";
+import { useAuth } from "@/context/AuthContext";
+import AdmissionsHero from "@/components/AdmissionsHero";
+import AdmissionsSelect from "@/components/AdmissionsSelect";
+import AdmissionsTest from "@/components/AdmissionsTest";
+import AdmissionsResult from "@/components/AdmissionsResult";
 
 export default function TuyenSinhPage() {
   const { user } = useAuth();

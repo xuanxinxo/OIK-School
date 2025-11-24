@@ -1,3 +1,5 @@
+"use client";
+
 import AdmissionsChat from "./AdmissionsChat";
 
 type Props = {

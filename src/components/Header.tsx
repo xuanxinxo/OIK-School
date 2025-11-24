@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useAuth } from '@/src/context/AuthContext';
+import { useAuth } from '@/context/AuthContext';
 import AuthModal from './AuthModal';
 import Avatar from './Avatar';
 
@@ -46,7 +46,7 @@ export default function Header() {
           
           <nav className="flex items-center gap-4 sm:gap-6 text-sm">
             <a href="/gioi-thieu" className="hover:underline">Giới thiệu</a>
-            <a href="/tin-tuc" className="hover:underline">Tin tức</a>
+            <a href="/tin-tuc" className="hover:underline">Tin tức mới</a>
             <a href="/tuyen-sinh" className="hover:underline">Tuyển sinh</a>
             <a href="/lien-he" className="hover:underline">Liên hệ</a>
             

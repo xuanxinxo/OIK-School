@@ -1,8 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-// import { sendChat, type ChatTurn } from "@/services/chat";
-import { sendChat, type ChatTurn } from "@/src/services/chat";
+import { sendChat, type ChatTurn } from "@/services/chat";
 
 type Props = {
   initialContext?: string;

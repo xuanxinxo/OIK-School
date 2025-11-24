@@ -2,8 +2,8 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { useAuth } from '@/src/context/AuthContext';
-import AuthGuard from '@/src/components/AuthGuard';
+import { useAuth } from '@/context/AuthContext';
+import AuthGuard from '@/components/AuthGuard';
 
 export default function TestPage() {
   const { user } = useAuth();

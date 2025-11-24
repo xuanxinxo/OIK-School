@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { useAuth } from '@/src/context/AuthContext';
+import { useAuth } from '@/context/AuthContext';
 
 interface AuthModalProps {
   isOpen: boolean;
