@@ -17,7 +17,7 @@ export default function GioiThieuPage() {
           /> 
           <h1 className="text-3xl sm:text-4xl font-bold mt-4 text-center">
             Trường THPT Ông Ích Khiêm
-          </h1>
+          </h1> 
           <p className="text-center text-lg text-gray-600 dark:text-gray-300 mt-2">
             “Ươm mầm tài năng - Kiến tạo tương lai - Xây dựng đất nước ngày càng vững mạnh ”
           </p>
