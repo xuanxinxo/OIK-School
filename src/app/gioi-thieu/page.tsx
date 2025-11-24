@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function GioiThieuPage() {
   return (
     <section className="px-6 sm:px-8 md:px-10">
-      <div className="max-w-5xl mx-auto py-12 sm:py-16 oik-section">
+      <div className="">
         
         {/* Phần banner */}
         <div className="mb-12">

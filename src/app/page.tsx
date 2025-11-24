@@ -109,7 +109,11 @@ export default function Home() {
                   />
                 </svg>
                 <div>
+<<<<<<< HEAD
                   <div className="font-semibold">High School Life</div>
+=======
+                  <div className="font-semibold"> High School</div>
+>>>>>>> f4a4111c488fa10073ab3b9f8fa6a532a6ad3667
                   <div className="text-sm text-black/70">
                     CLB đa dạng, hoạt động trải nghiệm phong phú.
                   </div>
