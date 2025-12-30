@@ -1,3 +1,4 @@
+"use client";
 // Danh sách các domain email ảo/thư rác phổ biến (được rút gọn để phù hợp)
 const DISPOSABLE_EMAIL_DOMAINS = [
   // Các dịch vụ email tạm thời phổ biến
