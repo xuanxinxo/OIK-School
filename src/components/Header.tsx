@@ -75,7 +75,7 @@ export default function Header() {
                       href="/test"
                       className="block px-4 py-2 text-sm hover:bg-gray-100"
                     >
-                      Làm bài test
+                      Làm bài test cùng mình nhé
                     </a>
                     <button
                       onClick={handleLogout}
