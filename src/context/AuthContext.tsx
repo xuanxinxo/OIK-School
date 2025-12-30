@@ -117,6 +117,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
       setUser(userData);
       localStorage.setItem('user', JSON.stringify(userData));
+      
+      if (onSuccess) {
+        onSuccess();
+      }
 
       return { success: true };
     } catch (error) {

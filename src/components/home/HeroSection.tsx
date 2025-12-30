@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import AuthModal from "@/components/AuthModal";
-import AdmissionsCountdown from "@/components/AdmissionsCountdown";
 
 export default function HeroSection() {
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
