@@ -47,7 +47,7 @@ export default function HeroSection() {
               href="#thong-tin"
               className="ml-4 inline-flex items-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-500 bg-opacity-60 hover:bg-opacity-70 md:py-4 md:text-lg md:px-10 transition-colors duration-200"
             >
-              Tìm hiểu thêm
+              Tìm hiểu thêm thông tin
             </Link>
           </div>
           
