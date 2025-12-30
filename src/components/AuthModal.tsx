@@ -21,6 +21,22 @@ export default function AuthModal({ isOpen, onClose, initialMode, onRegisterSucc
   const [error, setError] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  // Update mode when initialMode prop changes
+  React.useEffect(() => {
+    setMode(initialMode);
+  }, [initialMode]);
+
+  // Reset form when mode changes
+  React.useEffect(() => {
+    setFormData({
+      name: '',
+      email: '',
+      password: '',
+      confirmPassword: ''
+    });
+    setError('');
+  }, [mode]);
+
   const { login, register } = useAuth();
 
   const handleSubmit = async (e: React.FormEvent) => {

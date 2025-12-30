@@ -5,9 +5,11 @@ import { sendChat, type ChatTurn } from "@/services/chat";
 
 type Props = {
   initialContext?: string;
+  isOpen: boolean;
+  onClose: () => void;
 };
 
-export default function AdmissionsChat({ initialContext }: Props) {
+export default function AdmissionsChat({ initialContext, isOpen, onClose }: Props) {
   const [messages, setMessages] = useState<ChatTurn[]>(
     initialContext
       ? [
@@ -71,19 +73,26 @@ export default function AdmissionsChat({ initialContext }: Props) {
     <div className="fixed bottom-4 right-4 w-full max-w-sm sm:max-w-md z-50">
       <div className="rounded-3xl border border-gray-200 bg-white shadow-2xl overflow-hidden backdrop-blur-sm">
         {/* Header with gradient */}
-        <div className="px-5 py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white">
-          <div className="flex items-center gap-3">
+        <div className="px-5 py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white relative">
+          <button 
+            onClick={onClose}
+            className="absolute top-3 right-4 text-white/80 hover:text-white text-xl font-bold"
+            aria-label="Đóng chat"
+          >
+            &times;
+          </button>
+          <div className="flex items-center justify-center gap-3">
             <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
               </svg>
             </div>
-            <div>
+            <div className="text-center">
               <div className="text-sm font-semibold">Trợ lý tư vấn tuyển sinh</div>
               <div className="text-xs text-blue-100">Chat trực tiếp để được gợi ý phù hợp</div>
             </div>
           </div>
-          <div className="mt-2 text-xs text-blue-100 bg-blue-500/30 rounded-full px-3 py-1 inline-block">
+          <div className="mt-2 text-xs text-blue-100 bg-blue-500/30 rounded-full px-3 py-1 text-center">
             💡 Hệ thống thông minh - Tự động phân tích câu hỏi
           </div>
         </div>

@@ -17,10 +17,11 @@ export default function FeatureCards() {
           />
         </>
       ),
-      title: "Tốt nghiệp",
-      description: "Tỷ lệ tốt nghiệp cao, hướng nghiệp rõ ràng.",
+      title: "AI phân tích năng lực",
+      description:
+        "Trí tuệ nhân tạo phân tích học lực, sở thích và điểm mạnh để tư vấn ngành học phù hợp.",
       link: "/gioi-thieu",
-      linkText: "Tìm hiểu thêm"
+      linkText: "Khám phá AI"
     },
     {
       icon: (
@@ -29,22 +30,37 @@ export default function FeatureCards() {
           <path d="M12 3a9 9 0 019 9H12V3z" fill="currentColor" opacity=".2" />
         </>
       ),
-      title: "Hoạt động",
-      description: "CLB đa dạng, hoạt động trải nghiệm phong phú.",
+      title: "Gợi ý ngành & trường",
+      description:
+        "AI đề xuất ngành học và trường phù hợp dựa trên dữ liệu tuyển sinh và xu hướng nghề nghiệp.",
       link: "/tin-tuc",
-      linkText: "Xem hoạt động"
+      linkText: "Xem gợi ý"
     },
     {
       icon: (
         <>
-          <rect x="4" y="4" width="16" height="16" rx="3" stroke="currentColor" strokeOpacity=".5" />
-          <path d="M8 12h8M8 9h8M8 15h6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+          <rect
+            x="4"
+            y="4"
+            width="16"
+            height="16"
+            rx="3"
+            stroke="currentColor"
+            strokeOpacity=".5"
+          />
+          <path
+            d="M8 12h8M8 9h8M8 15h6"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+          />
         </>
       ),
-      title: "Hỗ trợ học tập",
-      description: "Tư vấn tâm lý, hướng nghiệp, ngoại ngữ.",
-      link: "/lien-he",
-      linkText: "Liên hệ"
+      title: "AI tư vấn 24/7",
+      description:
+        "Chatbot AI hỗ trợ tuyển sinh liên tục, giải đáp thắc mắc mọi lúc cho học sinh lớp 12.",
+   
+      linkText: "Nhận tư vấn"
     }
   ];
 
@@ -62,12 +78,7 @@ export default function FeatureCards() {
                 <div className="text-sm text-black/70">
                   {feature.description}
                 </div>
-                <Link
-                  href={feature.link}
-                  className="text-sm mt-2 inline-flex items-center gap-1 text-blue-600 hover:text-blue-800"
-                >
-                  {feature.linkText} →
-                </Link>
+               
               </div>
             </div>
           ))}

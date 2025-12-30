@@ -14,24 +14,37 @@ export default function ProgramInfo() {
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
         <div className="order-2 md:order-1">
           <h2 className="text-3xl font-bold text-gray-900 mb-4">
-            Chương trình học đa dạng và hiện đại
+            Hệ thống AI tư vấn tuyển sinh thông minh
           </h2>
+
           <p className="text-gray-600 mb-6">
-            Các tổ chuyên môn đổi mới phương pháp dạy học, chú trọng kỹ năng
-            thực hành, học theo dự án và nghiên cứu khoa học học sinh.
+            Ứng dụng trí tuệ nhân tạo (AI) giúp học sinh lớp 12 phân tích năng lực,
+            định hướng ngành nghề và lựa chọn trường học phù hợp với mục tiêu tương lai.
           </p>
+
           <ul className="space-y-3 mb-6">
             {programItems.map((item, index) => (
               <li key={index} className="flex items-start gap-3">
                 <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-blue-100 text-blue-700 mt-0.5 flex-shrink-0">
-                  <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  <svg
+                    className="w-3 h-3"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M5 13l4 4L19 7"
+                    />
                   </svg>
                 </span>
                 <span>{item}</span>
               </li>
             ))}
           </ul>
+
           <Link
             href="/chuong-trinh-hoc"
             className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700"
@@ -49,7 +62,7 @@ export default function ProgramInfo() {
                 className="object-cover"
               />
             </div>
-           <div className="relative rounded-xl overflow-hidden aspect-square">
+            <div className="relative rounded-xl overflow-hidden aspect-square">
               <Image
                 src="/img/stu.webp"
                 alt="Hoạt động ngoại khóa"

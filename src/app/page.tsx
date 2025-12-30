@@ -29,10 +29,10 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900">
-              Hành trình trở thành học sinh chính thức
+              Hành trình Đúng Hướng TuyểN Sinh
             </h2>
             <p className="mt-4 text-lg text-gray-600">
-              Các mốc thời gian quan trọng trong kỳ tuyển sinh năm 2025
+              Các mốc mục đích quan trọng
             </p>
           </div>
 
@@ -47,23 +47,23 @@ export default function Home() {
             {[
               {
                 icon: "🏫",
-                title: "Môi trường học tập",
-                desc: "Không gian học tập an toàn, hiện đại và truyền cảm hứng."
+                title: "AI tư vấn cá nhân hóa",
+                desc: "Phân tích học lực, sở thích và tính cách để gợi ý lộ trình phù hợp."
               },
               {
                 icon: "🎓",
-                title: "Đội ngũ giáo viên",
-                desc: "Giáo viên giàu kinh nghiệm, tận tâm và chuyên môn cao."
+                title: "Phân tích dữ liệu tuyển sinh",
+                desc: "So sánh ngành học, trường học dựa trên dữ liệu tuyển sinh thực tế."
               },
               {
                 icon: "🌍",
-                title: "Định hướng phát triển",
-                desc: "Chú trọng kỹ năng thế kỷ 21 và tư duy toàn cầu."
+                title: "Định hướng ngành nghề",
+                desc: "AI đề xuất ngành nghề theo năng lực và xu hướng thị trường lao động."
               },
               {
                 icon: "🎨",
-                title: "Hoạt động ngoại khóa",
-                desc: "CLB đa dạng, cân bằng học tập và phát triển cá nhân."
+                title: "Đồng hành cùng học sinh",
+                desc: "Hỗ trợ học sinh lớp 12 ra quyết định đúng đắn cho tương lai."
               }
             ].map((item, index) => (
               <div
@@ -84,28 +84,30 @@ export default function Home() {
         <div className="max-w-6xl mx-auto py-14 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
           <div>
             <h2 className="text-2xl sm:text-3xl font-bold mb-4">
-              Chương trình học đa dạng & hiện đại
+              Hệ thống tư vấn AI thông minh & cá nhân hóa
             </h2>
+
             <p className="text-gray-600 mb-6">
-              Nhà trường không ngừng đổi mới phương pháp giảng dạy, kết hợp hài hòa
-              giữa lý thuyết và thực hành nhằm giúp học sinh phát triển tư duy phản biện,
-              khả năng sáng tạo và kỹ năng làm việc nhóm.
+              Nền tảng ứng dụng trí tuệ nhân tạo (AI) để phân tích năng lực học tập, sở thích
+              cá nhân và xu hướng nghề nghiệp, từ đó đưa ra các gợi ý ngành học và trường học
+              phù hợp cho từng học sinh lớp 12.
             </p>
 
             <ul className="space-y-3 text-sm mb-6">
               <li className="flex items-start gap-2">
                 <span className="mt-1 h-3 w-3 rounded-full bg-blue-600" />
-                Học theo dự án (Project-based learning)
+                Phân tích dữ liệu học tập & sở thích cá nhân bằng AI
               </li>
               <li className="flex items-start gap-2">
                 <span className="mt-1 h-3 w-3 rounded-full bg-blue-600" />
-                Định hướng nghề nghiệp sớm
+                Gợi ý ngành nghề và trường học phù hợp theo năng lực
               </li>
               <li className="flex items-start gap-2">
                 <span className="mt-1 h-3 w-3 rounded-full bg-blue-600" />
-                Phát triển kỹ năng mềm & công nghệ
+                Cá nhân hóa lộ trình học tập và định hướng nghề nghiệp
               </li>
             </ul>
+
 
             <Link
               href="/gioi-thieu"

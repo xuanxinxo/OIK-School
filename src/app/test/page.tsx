@@ -117,7 +117,7 @@ export default function TestPage() {
           <div className="bg-white rounded-2xl shadow-lg p-8">
            <div className="mb-8">
              <h1 className="text-3xl font-bold text-gray-900 mb-4">
-               Bài Test Tuyển Sinh THPT Ông Ích Khiêm
+               Bài Test Tuyển Sinh Cùng AI
              </h1>
              <p className="text-gray-600">
                Chào mừng {user?.name}! Hãy trả lời các câu hỏi dưới đây để chúng tôi có thể đánh giá và tư vấn tuyển sinh phù hợp nhất cho bạn.

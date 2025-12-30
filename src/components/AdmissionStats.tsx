@@ -1,8 +1,8 @@
 const stats = [
-  { id: 1, name: 'Năm thành lập', value: '1995' },
-  { id: 2, name: 'Học sinh tốt nghiệp', value: '15.000+' },
-  { id: 3, name: 'Tỷ lệ đỗ tốt nghiệp', value: '100%' },
-  { id: 4, name: 'Đại học top đầu', value: '85%' },
+  { id: 1, name: 'Học sinh được AI tư vấn', value: '200+' },
+  { id: 2, name: 'Ngành nghề được phân tích', value: '100+' },
+  { id: 3, name: 'Độ chính xác gợi ý', value: '95%' },
+  { id: 4, name: 'Tư vấn 24/7 bằng AI', value: '100%' },
 ];
 
 export default function AdmissionStats() {
@@ -12,8 +12,12 @@ export default function AdmissionStats() {
         <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
           {stats.map((stat) => (
             <div key={stat.id} className="text-center">
-              <p className="text-4xl font-extrabold text-white">{stat.value}</p>
-              <p className="mt-2 text-sm font-medium text-blue-100">{stat.name}</p>
+              <p className="text-4xl font-extrabold text-white">
+                {stat.value}
+              </p>
+              <p className="mt-2 text-sm font-medium text-blue-100">
+                {stat.name}
+              </p>
             </div>
           ))}
         </div>

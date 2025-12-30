@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import AdmissionsChat from "./AdmissionsChat";
 
 type Props = {
@@ -9,6 +10,7 @@ type Props = {
 
 export default function AdmissionsResult({ score, onRestart }: Props) {
   const isTechnical = score <= 3;
+  const [isChatOpen, setIsChatOpen] = useState(true);
 
   return (
     <div className="bg-white rounded-3xl shadow-xl p-8 sm:p-12 border border-gray-100">
@@ -134,13 +136,17 @@ export default function AdmissionsResult({ score, onRestart }: Props) {
       </div>
 
       {/* Chat tư vấn tuyển sinh */}
-      <AdmissionsChat
-        initialContext={
-          isTechnical
-            ? "Mình vừa hoàn thành bài test, thiên về kỹ thuật/công nghệ. Gợi ý giúp mình các lựa chọn tại Đà Nẵng, yêu cầu đầu vào và học phí?"
-            : "Mình vừa hoàn thành bài test, thiên về xã hội/sáng tạo. Gợi ý giúp mình các lựa chọn tại Đà Nẵng, yêu cầu đầu vào và học phí?"
-        }
-      />
+      {isChatOpen && (
+        <AdmissionsChat
+          initialContext={
+            isTechnical
+              ? "Mình vừa hoàn thành bài test, thiên về kỹ thuật/công nghệ. Gợi ý giúp mình các lựa chọn tại Đà Nẵng, yêu cầu đầu vào và học phí?"
+              : "Mình vừa hoàn thành bài test, thiên về xã hội/sáng tạo. Gợi ý giúp mình các lựa chọn tại Đà Nẵng, yêu cầu đầu vào và học phý?"
+          }
+          isOpen={isChatOpen}
+          onClose={() => setIsChatOpen(false)}
+        />
+      )}
     </div>
   );
 }

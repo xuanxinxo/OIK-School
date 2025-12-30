@@ -8,7 +8,7 @@ export default function AdmissionsHero() {
         <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-indigo-600/10"></div>
         <div className="absolute inset-0">
           <Image
-            src="/img/OKI.jpg"
+            src="/img/dep.png"
             alt="Students studying"
             fill
             className="object-cover opacity-20"

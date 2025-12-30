@@ -9,7 +9,7 @@ export default function CTASection() {
           <span className="block text-blue-200">Đăng ký ngay hôm nay.</span>
         </h2>
         <div className="mt-8 flex lg:mt-0 lg:flex-shrink-0">
-          <div className="inline-flex rounded-md shadow">
+          {/* <div className="inline-flex rounded-md shadow">
             <Link
               href="/dang-ky"
               className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-blue-600 bg-white hover:bg-blue-50"
@@ -24,7 +24,7 @@ export default function CTASection() {
             >
               Liên hệ tư vấn
             </Link>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>
