@@ -17,11 +17,6 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "THPT Ông Ích Khiêm",
-  description:
-    "Giới thiệu về Trường THPT Ông Ích Khiêm – môi trường học tập thân thiện, sáng tạo, hướng tới phát triển toàn diện.",
-};
 
 export default function RootLayout({
   children,
