@@ -8,11 +8,13 @@ import AdmissionsCountdown from "@/components/AdmissionsCountdown";
 
 export default function HeroSection() {
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+  const [authMode, setAuthMode] = useState<'login' | 'register'>('login');
 
-  const handleRegisterClick = (e: React.MouseEvent) => {
-    e.preventDefault();
+   const handleRegisterClick = () => {
+    setAuthMode('register');
     setIsAuthModalOpen(true);
   };
+
 
   return (
     <section className="relative bg-gradient-to-r from-blue-700 to-blue-900 text-white">
@@ -59,7 +61,7 @@ export default function HeroSection() {
       <AuthModal
         isOpen={isAuthModalOpen}
         onClose={() => setIsAuthModalOpen(false)}
-        initialMode="register"
+        initialMode={authMode}
       />
     </section>
   );
