@@ -7,9 +7,10 @@ interface AuthModalProps {
   isOpen: boolean;
   onClose: () => void;
   initialMode: 'login' | 'register';
+  onRegisterSuccess?: () => void;
 }
 
-export default function AuthModal({ isOpen, onClose, initialMode }: AuthModalProps) {
+export default function AuthModal({ isOpen, onClose, initialMode, onRegisterSuccess }: AuthModalProps) {
   const [mode, setMode] = useState<'login' | 'register'>(initialMode);
   const [formData, setFormData] = useState({
     name: '',
@@ -41,12 +42,15 @@ export default function AuthModal({ isOpen, onClose, initialMode }: AuthModalPro
           setError('Mật khẩu xác nhận không khớp');
           return;
         }
-        const success = await register(formData.name, formData.email, formData.password);
-        if (success) {
+        const result = await register(formData.name, formData.email, formData.password, () => {
           onClose();
           setFormData({ name: '', email: '', password: '', confirmPassword: '' });
-        } else {
-          setError('Đăng ký thất bại. Vui lòng thử lại');
+          if (onRegisterSuccess) {
+            onRegisterSuccess();
+          }
+        });
+        if (!result.success) {
+          setError(result.message || 'Đăng ký thất bại. Vui lòng thử lại');
         }
       }
     } catch {

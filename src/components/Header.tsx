@@ -33,23 +33,26 @@ export default function Header() {
       <header className="w-full border-b border-black/[.08] dark:border-white/[.145] bg-[--color-primary-soft-2]">
         <div className="max-w-6xl mx-auto flex items-center justify-between p-4 sm:p-6">
           <Link href="/" className="flex items-center gap-3">
-            <Image
-              src="/logo truong.jpg"
-              alt="Logo THPT Ông Ích Khiêm"
-              width={80}
-              height={80}
-              className="h-20 w-20 object-cover"
-              priority
-            />
-            <span className="font-semibold">THPT Ông Ích Khiêm</span>
+            <div className="h-20 w-20 rounded-full border-2 border-blue-600 overflow-hidden">
+              <Image
+                src="/img/DAU.jpg"
+                alt="Logo"
+                width={80}
+                height={80}
+                className="h-full w-full object-cover"
+                priority
+              />
+            </div>
+
           </Link>
-          
+
+
           <nav className="flex items-center gap-4 sm:gap-6 text-sm">
             <a href="/gioi-thieu" className="hover:underline">Giới thiệu</a>
             <a href="/tin-tuc" className="hover:underline">Tin tức mới</a>
             <a href="/tuyen-sinh" className="hover:underline">Tuyển sinh</a>
             <a href="/lien-he" className="hover:underline">Liên hệ</a>
-            
+
             {user ? (
               <div className="relative">
                 <button
@@ -62,10 +65,10 @@ export default function Header() {
                     <span className="text-xs text-gray-500">Đã đăng nhập</span>
                   </div>
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                    <path d="M19 9l-7 7-7-7" stroke="currentColor" strokeWidth="2"/>
+                    <path d="M19 9l-7 7-7-7" stroke="currentColor" strokeWidth="2" />
                   </svg>
                 </button>
-                
+
                 {showUserMenu && (
                   <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-10">
                     <a
