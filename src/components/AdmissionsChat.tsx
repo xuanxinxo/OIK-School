@@ -111,7 +111,16 @@ export default function AdmissionsChat({ initialContext, isOpen, onClose }: Prop
                     : "bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-lg"
                 }`}
               >
-                <div className="whitespace-pre-wrap">{m.content}</div>
+                <div className="whitespace-pre-wrap">
+                {typeof m.content === 'string' ? m.content : m.content.text || ''}
+                {typeof m.content === 'object' && m.content.imageUrl && (
+                  <img 
+                    src={m.content.imageUrl} 
+                    alt="Uploaded content" 
+                    className="mt-2 rounded-lg max-w-full h-auto"
+                  />
+                )}
+              </div>
               </div>
             </div>
           ))}
