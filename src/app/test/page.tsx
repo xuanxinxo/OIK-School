@@ -4,12 +4,14 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { useAuth } from '@/context/AuthContext';
 import AuthGuard from '@/components/AuthGuard';
+import AdmissionsResult from '@/components/AdmissionsResult';
 
 export default function TestPage() {
   const { user } = useAuth();
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState<number[]>([]);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [testScore, setTestScore] = useState(0);
 
   // Bài test tuyển sinh
   const questions = [
@@ -74,39 +76,37 @@ export default function TestPage() {
     }
   };
 
+  const calculateScore = (answers: number[]): number => {
+    // Simple scoring: sum of all answer indices (0-3 or 0-4 or 0-7)
+    // You can adjust the weights based on question importance
+    return answers.reduce((sum, answer, index) => {
+      // Add more weight to certain questions if needed
+      const weight = 1; // Default weight
+      return sum + (answer || 0) * weight;
+    }, 0);
+  };
+
   const handleSubmit = () => {
+    const score = calculateScore(answers);
+    setTestScore(score);
     setIsSubmitted(true);
+    // Redirect to chat after a short delay
+    setTimeout(() => {
+      window.location.href = '/admissions-chat';
+    }, 3000);
   };
 
 
   if (isSubmitted) {
     return (
-      <div className="min-h-screen bg-gray-50 py-12">
-        <div className="max-w-4xl mx-auto px-6">
-          <div className="bg-white rounded-2xl shadow-lg p-8 text-center">
-            <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
-                <path d="M9 12l2 2 4-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </div>
-             <h1 className="text-3xl font-bold text-gray-900 mb-4">
-               Cảm ơn bạn đã hoàn thành bài test tuyển sinh!
-             </h1>
-             <p className="text-gray-600 mb-8">
-               Kết quả đánh giá của bạn đã được ghi nhận. Chúng tôi sẽ xem xét và liên hệ tư vấn tuyển sinh trong thời gian sớm nhất.
-             </p>
-             <div className="space-y-4">
-               <Link
-                 href="/"
-                 className="inline-flex items-center px-6 py-3 rounded-lg font-medium text-white"
-                 style={{ backgroundColor: 'var(--color-primary)' }}
-               >
-                 Về trang chủ
-               </Link>
-             </div>
-          </div>
-        </div>
-      </div>
+      <AdmissionsResult 
+        score={testScore}
+        onRestart={() => {
+          setCurrentQuestion(0);
+          setAnswers([]);
+          setIsSubmitted(false);
+        }}
+      />
     );
   }
 
