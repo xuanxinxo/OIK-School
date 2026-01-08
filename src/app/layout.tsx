@@ -6,7 +6,7 @@ import Footer from "../components/Footer";
 import { AuthProvider } from "../context/AuthContext";
 import dynamic from "next/dynamic";
 
-// Load ChatWidget client-side only
+
 const ChatWidget = dynamic(
   () => import('@/components/ChatWidget').then((mod) => mod.default),
   { ssr: false }
@@ -30,7 +30,6 @@ export default function RootLayout({
   return (
     <html lang="vi">
       <head>
-        {/* Google Analytics */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-F645TC5BX6"
           strategy="afterInteractive"
