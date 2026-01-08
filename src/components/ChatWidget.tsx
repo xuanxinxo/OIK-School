@@ -4,7 +4,7 @@ import { useState, useRef, useEffect, KeyboardEvent } from 'react';
 import { sendChat, type ChatTurn } from '@/services/chat';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Send, MessageCircle, X, Bot } from 'lucide-react';
+import { Send, MessageCircle, X, Bot, Check, Lightbulb } from 'lucide-react';
 
 export default function ChatWidget() {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,6 +14,8 @@ export default function ChatWidget() {
       content: 'Xin chào! Tôi là trợ lý ảo của trường. Tôi có thể giúp gì cho bạn?',
     },
   ]);
+  
+  const systemMessage = 'Hệ thống thông minh - Tự động phân tích câu hỏi';
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -59,38 +61,45 @@ export default function ChatWidget() {
   };
 
   return (
-    <div className="fixed bottom-8 right-8 z-50 flex flex-col items-end gap-4">
+    <div className="fixed bottom-8 left-8 z-50 flex flex-col items-start gap-4">
       {isOpen && (
         <div className="flex h-[600px] w-[400px] flex-col rounded-2xl border bg-white shadow-xl overflow-hidden">
           {/* Header */}
-          <div className="flex items-center justify-between bg-gradient-to-r from-blue-500 to-blue-600 p-4">
+          <div className="flex items-center justify-between bg-gradient-to-r from-blue-600 to-blue-700 p-3">
             <div className="flex items-center space-x-2">
-              <Bot className="h-5 w-5 text-white" />
-              <h3 className="text-lg font-semibold text-white">Trợ lý tuyển sinh</h3>
+              <Check className="h-4 w-4 text-white" />
+              <h3 className="text-base font-semibold text-white">Trợ lý tư vấn tuyển sinh</h3>
             </div>
-            <Button
-              variant="ghost"
-              size="icon"
+            <button
               onClick={() => setIsOpen(false)}
-              className="h-8 w-8"
+              className="text-white hover:bg-white/10 p-1 rounded-full"
+              aria-label="Đóng"
             >
               <X className="h-4 w-4" />
-            </Button>
+            </button>
           </div>
 
           {/* Messages */}
           <div className="flex-1 overflow-y-auto p-4">
-            <div className="space-y-4">
+            {/* System Message */}
+            <div className="flex items-center justify-center mb-4">
+              <div className="bg-blue-50 text-blue-700 text-xs px-3 py-1.5 rounded-full flex items-center space-x-1">
+                <Lightbulb className="h-3 w-3" />
+                <span>{systemMessage}</span>
+              </div>
+            </div>
+            
+            <div className="space-y-3">
               {messages.map((message, index) => (
                 <div
                   key={index}
                   className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}
                 >
                   <div
-                    className={`max-w-[80%] rounded-2xl px-4 py-2 ${
+                    className={`max-w-[80%] rounded-2xl px-4 py-2 text-sm ${
                       message.role === 'user'
-                        ? 'bg-blue-500 text-white rounded-tr-none'
-                        : 'bg-gray-100 text-gray-800 rounded-tl-none border border-gray-200'
+                        ? 'bg-blue-600 text-white rounded-br-none ml-auto'
+                        : 'bg-gray-100 text-gray-800 rounded-bl-none mr-auto'
                     } shadow-sm`}
                   >
                     {typeof message.content === 'string' ? message.content : message.content.text || ''}
@@ -109,19 +118,26 @@ export default function ChatWidget() {
           </div>
 
           {/* Input */}
-          <div className="border-t p-4">
-            <div className="flex gap-2">
-              <Input
+          <div className="border-t border-gray-200 p-3 bg-white">
+            <div className="relative flex items-center">
+              <input
+                type="text"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={handleKeyDown}
                 placeholder="Nhập câu hỏi của bạn..."
-                className="flex-1"
+                className="w-full py-2 pl-4 pr-12 text-sm text-gray-800 bg-gray-50 border border-gray-200 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 disabled={loading}
               />
-              <Button onClick={handleSend} disabled={loading || !input.trim()}>
-                <Send className="h-4 w-4" />
-              </Button>
+              <button
+                onClick={handleSend}
+                disabled={loading || !input.trim()}
+                className={`absolute right-2 p-1.5 rounded-full transition-colors ${
+                  input.trim() ? 'text-blue-600 hover:bg-blue-50' : 'text-gray-400'
+                }`}
+              >
+                <Send className="h-5 w-5" />
+              </button>
             </div>
           </div>
         </div>
@@ -132,27 +148,16 @@ export default function ChatWidget() {
         onClick={() => setIsOpen(!isOpen)}
         className={`
           group relative flex items-center justify-center
-          h-16 w-16 rounded-full bg-gradient-to-br from-blue-500 to-blue-600
-          text-white shadow-lg hover:shadow-xl transform hover:scale-105
-          transition-all duration-300 ease-in-out focus:outline-none
-          before:content-[''] before:absolute before:top-0 before:right-0
-          before:w-3 before:h-3 before:bg-red-500 before:rounded-full
-          before:animate-ping before:opacity-75
+          h-14 w-14 rounded-full bg-blue-600
+          text-white shadow-lg hover:bg-blue-700
+          transition-all duration-200 ease-in-out focus:outline-none
         `}
         aria-label="Mở trợ lý ảo"
       >
         {isOpen ? (
-          <X className="h-7 w-7" />
+          <X className="h-6 w-6" />
         ) : (
-          <>
-            <div className="absolute -top-2 -right-2 bg-white text-blue-600 text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
-              AI
-            </div>
-            <MessageCircle className="h-7 w-7" />
-            <span className="absolute -bottom-8 text-xs font-medium text-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              Hỏi tôi
-            </span>
-          </>
+          <MessageCircle className="h-6 w-6" />
         )}
       </button>
     </div>

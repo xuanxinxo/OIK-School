@@ -50,6 +50,7 @@ export default function Header() {
           <nav className="flex items-center gap-4 sm:gap-6 text-sm">
             <a href="/gioi-thieu" className="hover:underline">Giới thiệu</a>
             <a href="/tuyen-sinh" className="hover:underline">Tuyển sinh</a>
+            <a href="/tin-tuc" className="hover:underline">Tin tức</a>
             {user ? (
               <div className="relative">
                 <button

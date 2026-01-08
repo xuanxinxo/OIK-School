@@ -1,14 +1,13 @@
-"use client";
-
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { AuthProvider } from "../context/AuthContext";
-import dynamic from 'next/dynamic';
+import dynamic from "next/dynamic";
 
-// Tải ChatWidget với tùy chọn ssr: false để tránh lỗi hydration
-const ChatWidget = dynamic(() => import('@/components/ChatWidget'), {
+// Load ChatWidget client-side only
+const ChatWidget = dynamic(() => import("@/components/ChatWidget"), {
   ssr: false,
 });
 
@@ -22,25 +21,44 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="vi">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <head>
+        {/* Google Analytics */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-F645TC5BX6"
+          strategy="afterInteractive"
+        />
+
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){window.dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-F645TC5BX6');
+          `}
+        </Script>
+      </head>
+
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
         <AuthProvider>
-          {/* Site chrome */}
           <div className="min-h-screen flex flex-col">
             {/* Header */}
             <Header />
-            {/* Main */}
+
+            {/* Main content */}
             <main className="flex-1">{children}</main>
+
             {/* Footer */}
             <Footer />
-            
+
             {/* Chat Widget */}
             <ChatWidget />
           </div>
