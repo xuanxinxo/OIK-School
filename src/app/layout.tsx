@@ -7,9 +7,10 @@ import { AuthProvider } from "../context/AuthContext";
 import dynamic from "next/dynamic";
 
 // Load ChatWidget client-side only
-const ChatWidget = dynamic(() => import("@/components/ChatWidget"), {
-  ssr: false,
-});
+const ChatWidget = dynamic(
+  () => import('@/components/ChatWidget').then((mod) => mod.default),
+  { ssr: false }
+);
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
