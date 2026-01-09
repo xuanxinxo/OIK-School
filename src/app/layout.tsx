@@ -1,4 +1,3 @@
-"use client";
 import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
@@ -7,9 +6,8 @@ import Footer from "../components/Footer";
 import { AuthProvider } from "../context/AuthContext";
 import dynamic from "next/dynamic";
 
-
 const ChatWidget = dynamic(
-  () => import('@/components/ChatWidget').then((mod) => mod.default),
+  () => import("@/components/ChatWidget"),
   { ssr: false }
 );
 
@@ -31,17 +29,17 @@ export default function RootLayout({
   return (
     <html lang="vi">
       <head>
+        {/* Google Analytics */}
         <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-F645TC5BX6"
+          src="https://www.googletagmanager.com/gtag/js?id=G-N9N2ZQG8EP"
           strategy="afterInteractive"
         />
-
-        <Script id="google-analytics" strategy="afterInteractive">
+        <Script id="ga-init" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){window.dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-F645TC5BX6');
+            gtag('config', 'G-N9N2ZQG8EP');
           `}
         </Script>
       </head>
@@ -52,11 +50,8 @@ export default function RootLayout({
         <AuthProvider>
           <div className="min-h-screen flex flex-col">
             <Header />
-
             <main className="flex-1">{children}</main>
-
             <Footer />
-
             <ChatWidget />
           </div>
         </AuthProvider>
