@@ -51,16 +51,12 @@ export default function RootLayout({
       >
         <AuthProvider>
           <div className="min-h-screen flex flex-col">
-            {/* Header */}
             <Header />
 
-            {/* Main content */}
             <main className="flex-1">{children}</main>
 
-            {/* Footer */}
             <Footer />
 
-            {/* Chat Widget */}
             <ChatWidget />
           </div>
         </AuthProvider>

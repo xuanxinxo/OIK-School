@@ -1,12 +1,20 @@
 'use client';
 
 import { useState, useRef, useEffect, KeyboardEvent } from 'react';
+import { usePathname } from 'next/navigation';
 import { sendChat, type ChatTurn } from '@/services/chat';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Send, MessageCircle, X, Bot, Check, Lightbulb } from 'lucide-react';
 
 export default function ChatWidget() {
+  const pathname = usePathname();
+  const isAdmissionsPage = pathname?.startsWith('/tuyen-sinh');
+  
+  // Don't render the chat widget on the admissions page
+  if (isAdmissionsPage) {
+    return null;
+  }
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<ChatTurn[]>([
     {
