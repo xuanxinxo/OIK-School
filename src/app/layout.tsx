@@ -32,7 +32,7 @@ export default function RootLayout({
     <html lang="vi">
       <head>
         <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-F645TC5BX6"
+          src="https://www.googletagmanager.com/gtag/js?id=G-5H1G1G0CNW"
           strategy="afterInteractive"
         />
 
@@ -41,7 +41,7 @@ export default function RootLayout({
             window.dataLayer = window.dataLayer || [];
             function gtag(){window.dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-F645TC5BX6');
+            gtag('config', 'G-5H1G1G0CNW');
           `}
         </Script>
       </head>
