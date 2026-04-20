@@ -31,7 +31,7 @@ export default function HeroSection() {
       <div className="relative max-w-7xl mx-auto px-4 py-24 sm:px-6 lg:px-8">
         <div className="text-center">
           <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight">
-            Tuyển sinh 2025
+            Tuyển sinh 2026
           </h1>
           <p className="mt-4 text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto">
             Hành trình chinh phục tri thức

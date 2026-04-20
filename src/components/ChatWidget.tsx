@@ -152,7 +152,7 @@ export default function ChatWidget() {
       )}
 
       {/* Toggle Button with Bubble Effect */}
-      <button
+      {/* <button
         onClick={() => setIsOpen(!isOpen)}
         className={`
           group relative flex items-center justify-center
@@ -167,7 +167,7 @@ export default function ChatWidget() {
         ) : (
           <MessageCircle className="h-6 w-6" />
         )}
-      </button>
+      </button> */}
     </div>
   );
 }
