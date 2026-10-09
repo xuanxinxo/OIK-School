@@ -35,7 +35,7 @@ export default function Header() {
           <Link href="/" className="flex items-center gap-3">
             <div className="h-20 w-20 rounded-full border-2 border-blue-600 overflow-hidden">
               <Image
-                src="/img/DAU.jpg"
+                src="/img/logoschool.jpg"
                 alt="Logo"
                 width={80}
                 height={80}

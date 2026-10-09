@@ -56,7 +56,7 @@ export default function ProgramInfo() {
           <div className="grid grid-cols-2 gap-4">
             <div className="relative rounded-xl overflow-hidden aspect-square">
               <Image
-                src="/img/ai.jpg"
+                src="/img/room.jpg"
                 alt="Học sinh trong lớp học"
                 fill
                 className="object-cover"
@@ -64,7 +64,7 @@ export default function ProgramInfo() {
             </div>
             <div className="relative rounded-xl overflow-hidden aspect-square">
               <Image
-                src="/img/stu.webp"
+                src="/img/rooms.jpg"
                 alt="Hoạt động ngoại khóa"
                 fill
                 className="object-cover"

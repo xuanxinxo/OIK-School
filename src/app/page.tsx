@@ -119,14 +119,14 @@ export default function Home() {
 
           <div className="grid grid-cols-3 gap-3">
             <Image
-              src="/img/chill.jpg"
+              src="/img/goods.jpg"
               alt="Học sinh trong lớp"
               width={400}
               height={260}
               className="rounded-xl object-cover h-[210px] w-full col-span-1"
             />
             <Image
-              src="/img/sholl.jpg"
+              src="/img/good.jpg"
               alt="Hoạt động học tập"
               width={800}
               height={260}

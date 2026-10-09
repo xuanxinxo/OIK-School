@@ -9,7 +9,7 @@ export default function HeroSection() {
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const [authMode, setAuthMode] = useState<'login' | 'register'>('login');
 
-   const handleRegisterClick = () => {
+  const handleRegisterClick = () => {
     setAuthMode('register');
     setIsAuthModalOpen(true);
   };
@@ -17,17 +17,25 @@ export default function HeroSection() {
 
   return (
     <section className="relative bg-gradient-to-r from-blue-700 to-blue-900 text-white">
+
+
+
+
+      {/* Ảnh nền banner */}
       <div className="absolute inset-0 overflow-hidden">
         <Image
-          src="/img/dep.png"
-          alt="Học sinh"
-          width={1920}
-          height={1080}
-          className="w-full h-full object-cover opacity-50"
+          src="/img/banner.jpg"
+          alt="Trường THPT Ông Ích Khiêm"
+          fill
           priority
+          sizes="100vw"
+          className="object-cover"
+          style={{ objectPosition: "center 65%" }}
         />
       </div>
-      
+
+      {/* Lớp phủ giúp chữ nổi bật */}
+      <div className="absolute inset-0 bg-gradient-to-r from-blue-950/5 via-blue-900/0 to-blue-950/0" />
       <div className="relative max-w-7xl mx-auto px-4 py-24 sm:px-6 lg:px-8">
         <div className="text-center">
           <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight">
@@ -36,7 +44,7 @@ export default function HeroSection() {
           <p className="mt-4 text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto">
             Hành trình chinh phục tri thức
           </p>
-          
+
           <div className="mt-10">
             <Link
               href="/tuyen-sinh"
@@ -51,12 +59,12 @@ export default function HeroSection() {
               Tìm hiểu thêm thông tin
             </Link>
           </div>
-          
+
           <div className="mt-12">
           </div>
         </div>
       </div>
-      
+
       <AuthModal
         isOpen={isAuthModalOpen}
         onClose={() => setIsAuthModalOpen(false)}
