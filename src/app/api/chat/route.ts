@@ -1,4 +1,5 @@
 import { NextRequest } from "next/server";
+import Groq from "groq-sdk";
 
 // Simple in-memory rate limiter (best-effort; resets on cold start)
 const RATE_LIMIT_WINDOW_MS = 60_000; // 1 minute
@@ -40,10 +41,9 @@ export async function POST(req: NextRequest) {
       ? body.messages
       : [];
 
-    const openaiKey = process.env.OPENAI_API_KEY;
     const groqKey = process.env.GROQ_API_KEY;
 
-    if (!openaiKey && !groqKey) {
+    if (!groqKey) {
       // Fallback câu trả lời thông minh dựa trên nội dung câu hỏi
       const userMessage = messages[messages.length - 1]?.content?.toLowerCase() || '';
       console.log('Using fallback mode, user message:', userMessage);
@@ -113,54 +113,15 @@ export async function POST(req: NextRequest) {
         "Bạn là chuyên viên tư vấn tuyển sinh của THPT Ông Ích Khiêm. Trả lời ngắn gọn, rõ ràng, thân thiện bằng tiếng Việt. Gợi ý ngành phù hợp dựa trên sở thích, điểm mạnh, vị trí địa lý Đà Nẵng, và đưa lời khuyên thực tế (nguồn tham khảo, cách nộp hồ sơ). Tránh hứa hẹn không có cơ sở.",
     };
 
-    // Decide provider: prefer Groq if available (free tier friendly), else OpenAI
-    const provider = groqKey ? "groq" : "openai";
-    const payload = {
-      model: provider === "groq" ? "llama-3.1-8b-instant" : "gpt-4o-mini",
+    // Use Groq SDK with openai/gpt-oss-120b model
+    const groq = new Groq({ apiKey: groqKey! });
+    const completion = await groq.chat.completions.create({
+      model: "openai/gpt-oss-120b",
       messages: [systemPrompt, ...messages],
       temperature: 0.4,
-    } as const;
-
-    const endpoint =
-      provider === "groq"
-        ? "https://api.groq.com/openai/v1/chat/completions"
-        : "https://api.openai.com/v1/chat/completions";
-
-    const auth = provider === "groq" ? groqKey! : openaiKey!;
-
-    const response = await fetch(endpoint, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${auth}`,
-      },
-      body: JSON.stringify(payload),
     });
 
-    if (!response.ok) {
-      // Forward upstream error with appropriate status (e.g., 401 invalid_api_key)
-      let msg = "Upstream error";
-      let code: string | undefined;
-      try {
-        const err = await response.json();
-        msg = err?.error?.message ?? JSON.stringify(err);
-        code = err?.error?.code;
-      } catch {
-        msg = await response.text();
-      }
-      // Provide a friendlier message for common cases
-      const friendly =
-        response.status === 429
-          ? "Bạn đã vượt quá hạn mức hoặc gửi quá nhanh. Vui lòng thử lại sau, hoặc kiểm tra hạn mức/billing của khóa API."
-          : msg;
-      return new Response(
-        JSON.stringify({ reply: friendly, code: code ?? "upstream_error" }),
-        { status: response.status, headers: { "Content-Type": "application/json" } }
-      );
-    }
-
-    const data = await response.json();
-    const reply = data?.choices?.[0]?.message?.content ?? "";
+    const reply = completion.choices[0]?.message?.content || "";
 
     return new Response(JSON.stringify({ reply }), {
       status: 200,
